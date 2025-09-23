@@ -1,0 +1,21 @@
+class Solution(object):
+    def compareVersion(self, version1, version2):
+        a= version1.split(".")
+        
+        b=version2.split(".")
+        n = [int(p) for p in a]
+        y = [int(i) for i in b]
+        max_len = max(len(n), len(y))
+        n += [0] * (max_len - len(n))
+        y += [0] * (max_len - len(y))
+        for i,j in zip(n,y):
+            if (i<j):
+                return -1
+            elif (i>j):
+                return 1
+        return 0    
+
+      
+            
+       
+        
