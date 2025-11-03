@@ -1,0 +1,20 @@
+class Solution:
+    def kthLargestPerfectSubtree(self, root: Optional[TreeNode], k: int) -> int:
+
+        def dfs(node):
+
+            if not node:return 0
+
+            left, rght = dfs(node.left), dfs(node.right)
+            
+            if left != rght: return -1
+            
+            ans.append(left + rght + 1)
+            return left + rght + 1
+            
+
+        ans = []    
+        dfs(root)
+
+        if len(ans) < k: return -1
+        return nlargest(k,ans)[k-1]
