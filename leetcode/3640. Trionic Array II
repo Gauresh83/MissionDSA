@@ -1,0 +1,26 @@
+class Solution:
+    def maxSumTrionic(self, nums: List[int]) -> int:
+        n = len(nums)
+
+        a = b = c = result = -math.inf
+        for i in range(1, n):
+            x0, x1 = nums[i - 1], nums[i]
+
+            na = nb = nc = -math.inf
+            if x0 < x1:  # up
+                # phase 1: start new a or extend current inc a
+                na = max(x0 + x1, a + x1)
+
+                # phase 3: extend current inc c OR switch from dec b to inc c
+                nc = max(c + x1, b + x1)
+
+            elif x0 > x1:  # down
+                # phase 2: extend current dec b OR switch from inc a to dec b
+                nb = max(b + x1, a + x1)
+
+            # else: equal => reset all a, b, c (stay -math.inf)
+
+            result = max(result, nc)
+            a, b, c = na, nb, nc
+
+        return result
