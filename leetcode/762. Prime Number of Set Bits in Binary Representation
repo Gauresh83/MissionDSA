@@ -1,0 +1,9 @@
+class Solution:
+    def countPrimeSetBits(self, left: int, right: int) -> int:
+        PRIME_MASK = 665772   # bit positions for primes
+        
+        ans = 0
+        for x in range(left, right+1):
+            if (PRIME_MASK >> x.bit_count()) & 1:
+                ans += 1
+        return ans
