@@ -1,0 +1,13 @@
+class Solution:
+    def maximumWealth(self, accounts: List[List[int]]) -> int:
+        max_profit=0
+        for i in accounts:
+            max_profit=max(sum(i),max_profit)
+        return max_profit           
+
+
+        
+
+         
+
+        
