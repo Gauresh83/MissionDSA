@@ -1,0 +1,3 @@
+class Solution:
+    def areSimilar(self, g: List[List[int]], k: int) -> bool:
+        return all(r[k%len(r):]+r[:k%len(r)]==r for r in g)
