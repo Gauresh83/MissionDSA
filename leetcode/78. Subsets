@@ -1,0 +1,20 @@
+from typing import List
+
+class Solution:
+
+    def rec(self, start, temp_set):
+        # add current subset
+        self.res.append(temp_set.copy())
+
+        for ind in range(start, self.n):
+            temp_set.append(self.nums[ind])
+            self.rec(ind + 1, temp_set)
+            temp_set.pop()
+
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        self.nums = nums
+        self.n = len(nums)
+        self.res = []
+
+        self.rec(0, [])
+        return self.res
