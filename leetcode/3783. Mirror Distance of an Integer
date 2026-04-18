@@ -1,0 +1,8 @@
+class Solution:
+    def mirrorDistance(self, n: int) -> int:
+        temp=n
+        rev=int(str(abs(n))[::-1])
+        a=abs(n-rev)
+        return a
+
+       
