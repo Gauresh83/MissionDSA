@@ -1,0 +1,18 @@
+class Solution:
+    def distance(self, nums: List[int]) -> List[int]:
+        d = defaultdict(list)
+        for i, val in enumerate(nums):
+            d[val].append(i)
+        res = [0] * len(nums)
+        for v in d.values():
+            if len(v) > 1:
+                c = len(v)
+                i = v[0]
+                res[i] = sum(v) - c * i
+                x, y = 0, c - 2
+                for n in v[1:]:
+                    res[n] = res[i] + (x - y) * (n - i)
+                    x += 1
+                    y -= 1
+                    i = n
+        return res
