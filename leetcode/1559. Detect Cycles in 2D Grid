@@ -1,0 +1,30 @@
+class Solution:
+    def containsCycle(self, grid: List[List[str]]) -> bool:
+        rows = len(grid)
+        cols = len(grid[0])
+        visited = [[False] * cols for _ in range(rows)]
+        dirs = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+
+        for row in range(rows):
+            for col in range(cols):
+                if visited[row][col]:
+                    continue
+                stack = [(row, col, -1, -1)]
+                visited[row][col] = True
+                while stack:
+                    cr, cc, pr, pc = stack.pop()
+                    for dr, dc in dirs:
+                        nr, nc = cr + dr, cc + dc
+                        if nr < 0 or nr >= rows or nc < 0 or nc >= cols:
+                            continue
+                        if grid[nr][nc] != grid[cr][cc]:
+                            continue
+                        if nr == pr and nc == pc:
+                            continue
+                        if visited[nr][nc]:
+                            return True
+                        visited[nr][nc] = True
+                        stack.append((nr, nc, cr,cc))
+
+
+        return False
