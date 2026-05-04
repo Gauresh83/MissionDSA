@@ -1,0 +1,5 @@
+class Solution:
+    def rotate(self, matrix: List[List[int]]) -> None:
+        matrix[:]=[row[::-1] for row in zip(*matrix)]
+        
+        
