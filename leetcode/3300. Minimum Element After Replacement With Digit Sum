@@ -1,0 +1,14 @@
+class Solution:
+    def minElement(self, nums: list[int]) -> int:
+        min_val = float('inf')
+        
+        for num in nums:
+            current_sum = 0
+            
+            while num > 0:
+                current_sum += num % 10
+                num //= 10
+            
+            min_val = min(min_val, current_sum)
+                
+        return min_val
