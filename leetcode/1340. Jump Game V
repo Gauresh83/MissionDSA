@@ -1,0 +1,43 @@
+class Solution:
+    def dfs(self,i,arr,d,dp):
+
+        if dp[i] != -1:
+            return dp[i]
+
+        ans = 1
+
+        n = len(arr)
+
+        # move right
+        for j in range(i + 1,min(n - 1, i + d) + 1):
+
+            # blocked
+            if arr[j] >= arr[i]:
+                break
+
+            ans = max(ans,1 + self.dfs(j,arr,d,dp))
+
+        # move left
+        for j in range(i - 1,max(0, i - d) - 1,-1):
+
+            # blocked
+            if arr[j] >= arr[i]:
+                break
+
+            ans = max(ans,1 + self.dfs(j,arr,d,dp))
+
+        dp[i] = ans
+
+        return ans
+
+    def maxJumps(self, arr: List[int], d: int) -> int:
+        n = len(arr)
+
+        dp = [-1] * n
+
+        ans = 1
+
+        for i in range(n):
+            ans = max(ans,self.dfs(i,arr,d,dp))
+
+        return ans
