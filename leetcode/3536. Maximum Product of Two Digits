@@ -1,0 +1,15 @@
+class Solution:
+    def maxProduct(self, n: int) -> int:
+        
+        max1=-1
+        max2=-1
+        while n>0:
+            nums=n%10
+            if nums>max1:
+                max2=max1
+                max1=nums
+            elif nums>max2:
+                max2=nums
+            
+            n=n//10
+        return max1*max2
