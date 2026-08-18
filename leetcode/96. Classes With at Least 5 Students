@@ -1,0 +1,3 @@
+# Write your MySQL query statement below
+-- select class from (select class ,count(*) as c from Courses group by class ) as cs where c>=5;
+select class from Courses group by class having count(*)>=5;
