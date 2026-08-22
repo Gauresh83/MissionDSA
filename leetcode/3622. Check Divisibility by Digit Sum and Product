@@ -1,0 +1,15 @@
+class Solution:
+    def checkDivisibility(self, n: int) -> bool:
+        temp=n
+        sum1=0
+        product=1
+        while n!=0:
+            res=n%10
+            sum1+=res
+            product*=res
+            n//=10
+        if temp%(sum1+product)==0:
+            return True
+        
+        return False
+        
